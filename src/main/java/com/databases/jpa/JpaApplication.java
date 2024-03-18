@@ -43,7 +43,7 @@ public class JpaApplication {
 						System.out.println("Student with specified email not found");
 					});
 
-			studentRepository.findStudentByFirstNameEqualsAndAgeEquals(
+			studentRepository.findStudentsByFirstNameEqualsAndAgeIsGreaterThanEqual(
 					"sharon",
 					25
 			).forEach(System.out::println);

@@ -51,13 +51,12 @@ public class Student {
             name = "age",
             nullable = false
     )
-    private String age;
+    private int age;
 
     public Student() {
     }
 
-    public Student(Long id, String firstName, String lastName, String email, String age) {
-        this.id = id;
+    public Student(String firstName, String lastName, String email, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -107,11 +106,11 @@ public class Student {
         this.email = email;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 }

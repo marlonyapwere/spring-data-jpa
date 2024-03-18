@@ -30,34 +30,14 @@ public class JpaApplication {
 					25);
 			studentRepository.save(marlon);
 
-			System.out.println("Adding marlon and sharon");
 			studentRepository.saveAll(List.of(marlon, sharon));
 
-			System.out.println("Number of Students");
-			System.out.println(studentRepository.count());
-
-			System.out.println("Find Student 2 By ID");
 			studentRepository
-					.findById(2L)
+					.findStudentByEmail("sharon@email.com")
 					.ifPresentOrElse(System.out::println, () -> {
-				System.out.println("Student with ID 2 not found");
-			});
-
-			System.out.println("Find Student 3 By ID");
-			studentRepository
-					.findById(3L)
-					.ifPresentOrElse(System.out::println, () -> {
-						System.out.println("Student with ID 2 not found");
+						System.out.println("Student with specified email not found");
 					});
 
-			System.out.println("Find all Students");
-			List<Student> students = studentRepository.findAll();
-			students.forEach(System.out::println);
-
-
-			System.out.println("Delete Student by ID");
-			studentRepository.deleteById(1L);
-			System.out.println(studentRepository.count());
 		};
 	}
 

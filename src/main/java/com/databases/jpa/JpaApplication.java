@@ -47,6 +47,9 @@ public class JpaApplication {
 					"sharon",
 					25
 			).forEach(System.out::println);
+
+			System.out.println("deleting 3L");
+			System.out.println(studentRepository.deleteStudentById(3L));
 		};
 	}
 

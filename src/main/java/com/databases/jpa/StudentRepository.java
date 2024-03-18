@@ -1,8 +1,10 @@
 package com.databases.jpa;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,5 +22,9 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
             nativeQuery = true
     )
     List<Student> findStudentsByFirstNameEqualsAndAgeIsGreaterThanEqualNative(@Param("firstName") String firstName, @Param("age") Integer age);
-    List<Student> findStudentByFirstNameEqualsAndAgeEquals(String firstName, int age);
+
+    @Transactional
+    @Modifying // This tell Spring Data that the query does not need to map anything from the database to an entity
+    @Query("DELETE FROM Student u WHERE u.id = ?1")
+    int deleteStudentById(Long id);
 }

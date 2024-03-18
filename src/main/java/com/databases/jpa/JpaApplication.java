@@ -28,9 +28,14 @@ public class JpaApplication {
 					"N",
 					"sharon@email.com",
 					25);
-			studentRepository.save(marlon);
 
-			studentRepository.saveAll(List.of(marlon, sharon));
+			Student sharon2 = new Student(
+					"Sharon2",
+					"N",
+					"sharo@email.com",
+					25);
+
+			studentRepository.saveAll(List.of(marlon, sharon, sharon2));
 
 			studentRepository
 					.findStudentByEmail("sharon@email.com")
@@ -38,6 +43,10 @@ public class JpaApplication {
 						System.out.println("Student with specified email not found");
 					});
 
+			studentRepository.findStudentByFirstNameEqualsAndAgeEquals(
+					"sharon",
+					25
+			).forEach(System.out::println);
 		};
 	}
 

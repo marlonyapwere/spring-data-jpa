@@ -26,6 +26,9 @@ public class StudentIdCard {
     )
     private long id;
 
+    /*
+    * CascadeType.ALL means cascade all Operations(CREATE, READ, DELETE, UPDATE)
+    * */
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(
             name = "student_id",

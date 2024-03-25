@@ -28,6 +28,7 @@ public class StudentIdCard {
 
     /*
     * CascadeType.ALL means cascade all Operations(CREATE, READ, DELETE, UPDATE)
+    * FetchType.EAGER --> When you fetch/ load the StudentIdCard, also fetch/ load the Student
     * */
     @OneToOne(
             cascade = CascadeType.ALL,

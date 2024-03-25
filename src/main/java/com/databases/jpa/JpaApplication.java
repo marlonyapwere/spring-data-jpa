@@ -36,6 +36,8 @@ public class JpaApplication {
 					"123456789");
 
 			studentIdCardRepository.save(studentIdCard);
+			studentIdCardRepository.findById(1L)
+					.ifPresent(System.out::println);
 		};
 
 	}

@@ -29,7 +29,10 @@ public class StudentIdCard {
     /*
     * CascadeType.ALL means cascade all Operations(CREATE, READ, DELETE, UPDATE)
     * */
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
+    )
     @JoinColumn(
             name = "student_id",
             referencedColumnName = "id"
@@ -62,5 +65,14 @@ public class StudentIdCard {
 
     public String getCard_number() {
         return card_number;
+    }
+
+    @Override
+    public String toString() {
+        return "StudentIdCard{" +
+                "id=" + id +
+                ", student=" + student +
+                ", card_number='" + card_number + '\'' +
+                '}';
     }
 }

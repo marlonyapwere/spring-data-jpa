@@ -53,6 +53,11 @@ public class Student {
     )
     private int age;
 
+    @OneToOne(
+            mappedBy = "student"
+    )
+    private StudentIdCard studentIdCard;
+
     public Student() {
     }
 

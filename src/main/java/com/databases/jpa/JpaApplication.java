@@ -18,10 +18,26 @@ public class JpaApplication {
 	}
 
 	@Bean
-	CommandLineRunner commandLineRunner(StudentRepository studentRepository) {
+	CommandLineRunner commandLineRunner(
+			StudentRepository studentRepository,
+			StudentIdCardRepository studentIdCardRepository) {
 		return args -> {
+			Faker faker = new Faker();
+			String firstName = faker.name().firstName();
+			String lastName = faker.name().lastName();
+			String email = String.format("%s.%s@email.com", firstName, lastName);
+			Student student = new Student(firstName,
+					lastName,
+					email,
+					faker.number().numberBetween(17, 55));
 
+			StudentIdCard studentIdCard = new StudentIdCard(
+					student,
+					"123456789");
+
+			studentIdCardRepository.save(studentIdCard);
 		};
+
 	}
 
 	private void generateRandomStudents(StudentRepository studentRepository) {

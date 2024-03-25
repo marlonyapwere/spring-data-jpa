@@ -20,15 +20,7 @@ public class JpaApplication {
 	@Bean
 	CommandLineRunner commandLineRunner(StudentRepository studentRepository) {
 		return args -> {
-			generateRandomStudents(studentRepository);
 
-			PageRequest pageRequest = PageRequest.of(
-					0,
-					5,
-					Sort.by("firstName"));
-
-			Page<Student> page = studentRepository.findAll(pageRequest);
-			System.out.println(page);
 		};
 	}
 
